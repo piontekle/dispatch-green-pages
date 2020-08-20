@@ -8,12 +8,10 @@ describe("Company", () => {
 
   describe("POST /create", () => {
     it("should create a new company", (done) => {
+
       const options = {
         url: `${base}create`,
-        form: {
-          name: "Thor's Hardware",
-          location: "Asgard"
-        }
+        form: {form: { name: "Thor's Hardware", location: "Asgard" }}
       };
 
       request.post(options, (err, res, body) => {

@@ -26,7 +26,7 @@ function getAll(req, res, next) {
 
 function create(req, res, next) {
   const { form }= req.body;
-
+  
   return service.createCompany(form)
   .then(company => {
     company.msg
@@ -41,7 +41,7 @@ function create(req, res, next) {
 
 function remove(req, res, next) {
   const { name } = req.body;
-  console.log(req.body)
+
   return service.deleteCompany(name)
   .then(result => {
     result.msg
