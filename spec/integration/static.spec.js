@@ -1,6 +1,6 @@
 const request = require("request");
 const server = require("../../server");
-const base = "http://localhost:5000/";
+const base = "http://localhost:5000/api";
 
 describe("routes : static", () => {
   describe("GET /", () => {

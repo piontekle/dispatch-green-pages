@@ -4,14 +4,11 @@ const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 
 const app = express();
+const routes = require('./api');
 const db = require('./db');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
-
-app.get('/', (req, res) => {
-  const name = req.query.name || 'World';
-  res.setHeader('Content-Type', 'application/json');
-  res.status(200).json({ msg: 'OK' });
-});
+app.use('/api', routes);
 
 module.exports = app;
