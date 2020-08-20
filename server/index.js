@@ -1,17 +1,26 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
+const app = require('./app');
+const http = require('http');
 
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(pino);
+//server
+const port = normalizePort(process.env.PORT || 5000);
+app.set("port", port);
 
-app.get('/api/greeting', (req, res) => {
-  const name = req.query.name || 'World';
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
+const server = http.createServer(app);
+
+server.listen(port);
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+  if (isNaN(port)) {
+    return val;
+  }
+
+  if (port >= 0) {
+    return port;
+  }
+  return false;
+}
+
+server.on("listening", () => {
+  console.log(`server is listening for requests on port ${server.address().port}`);
 });
-
-app.listen(5000, () =>
-  console.log('Express server is running on localhost:5000')
-);
