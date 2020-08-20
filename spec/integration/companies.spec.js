@@ -31,7 +31,7 @@ describe("Company", () => {
     })
   });
 
-  describe("POST /delete", () => {
+  describe("POST /remove", () => {
     it("should delete existing record", (done) => {
       Company.create({ name: "Antman's Pest Control" })
       .then(company => {

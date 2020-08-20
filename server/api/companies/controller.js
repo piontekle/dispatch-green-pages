@@ -5,9 +5,7 @@ function get(req, res, next) {
 
   return service.getCompany(name)
   .then(company => {
-    company.msg
-    ? res.status(500).json({ msg: company.msg })
-    : res.status(200).json(company);
+    res.status(200).json(company);
   })
   .catch(err => {
     console.log(err);
@@ -18,9 +16,7 @@ function get(req, res, next) {
 function getAll(req, res, next) {
   return service.getCompanies()
   .then(companies => {
-    companies.msg
-    ? res.status(500).json({ msg: companies.msg })
-    : res.status(200).json(companies);
+    res.status(200).json(companies);
   })
   .catch(err => {
     console.log(err);
@@ -29,7 +25,7 @@ function getAll(req, res, next) {
 };
 
 function create(req, res, next) {
-  const form = req.body;
+  const { form }= req.body;
 
   return service.createCompany(form)
   .then(company => {
@@ -45,12 +41,13 @@ function create(req, res, next) {
 
 function remove(req, res, next) {
   const { name } = req.body;
-
+  console.log(req.body)
   return service.deleteCompany(name)
   .then(result => {
     result.msg
     ? res.status(500).json({ msg: result.msg })
-    : res.status(200).json(result)
+    : service.getCompanies()
+    .then(companies => res.status(200).json(companies));
   })
   .catch(err => {
     console.log(err);

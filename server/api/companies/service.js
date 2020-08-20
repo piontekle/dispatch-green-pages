@@ -32,7 +32,7 @@ async function deleteCompany(name) {
   try {
     const result = await Company.deleteOne({ name: name });
 
-    return result;
+    return result.ok > 0 ? result : { msg: "DB error deleting company." };
   } catch(err) {
     console.log(err);
     return { msg: err };
