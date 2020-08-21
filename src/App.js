@@ -162,22 +162,26 @@ class App extends Component {
                 aria-describedby="basic-addon1"
               />
             </div>
-            {!showForm && <button onClick={this.onSearch} className="btn btn-primary">Search</button>}
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={() => this.toggle("showForm")}
-            >
-              Add Company
-            </button>
-            <div>Companies</div>
             {
               !showForm
               ? (
-                <List
-                  companies={companies}
-                  onClick={this.onListClick}
-                />
+                <>
+                  <button onClick={this.onSearch} className="btn btn-primary">
+                    Search
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={() => this.toggle("showForm")}
+                  >
+                    Add Company
+                  </button>
+                  <h5>Companies</h5>
+                  <List
+                    companies={companies}
+                    onClick={this.onListClick}
+                  />
+                </>
               ) : (
                 <Form
                   isEditing={isEditing}
