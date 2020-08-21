@@ -36,7 +36,9 @@ All backend tests written in [Jasmine](https://jasmine.github.io/pages/getting_s
 [Kan Ban Board for Planning](https://trello.com/b/I34pKs2G/dispatch-green-pages)
 
 Initial Scaffolding, Installs, Tests - ~1.5 hrs
+
 API - 1 hr
+
 Frontend - ~1.5 hrs
 
 
